@@ -147,7 +147,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/%E5%8D%9A%E5%AE%A2%E5%90%8D%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/05/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,7 +161,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/23/%E5%8D%9A%E5%AE%A2%E5%90%8D%E5%AD%97/" class="post-title-link" itemprop="url">博客名字</a>
+            <a href="/2020/12/05/jvm/" class="post-title-link" itemprop="url">jvm虚拟机对象</a>
         </h2>
 
         <div class="post-meta">
@@ -170,8 +170,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-23 20:51:47" itemprop="dateCreated datePublished" datetime="2020-11-23T20:51:47+08:00">2020-11-23</time>
+              <time title="创建时间：2020-12-05 12:12:57 / 修改时间：14:42:14" itemprop="dateCreated datePublished" datetime="2020-12-05T12:12:57+08:00">2020-12-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">java后端</span></a>
+                </span>
             </span>
 
           <br>
@@ -180,7 +190,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>425</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -199,7 +209,138 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h3 id="JVM总结"><a href="#JVM总结" class="headerlink" title="JVM总结"></a>JVM总结</h3><h4 id="虚拟机头对象"><a href="#虚拟机头对象" class="headerlink" title="虚拟机头对象"></a>虚拟机头对象</h4><p>分为三部分组成</p>
+<ul>
+<li><p>对象头</p>
+<ol>
+<li><p>markword 标记头</p>
+<p> GC分代年龄</p>
+<p> 哈希吗</p>
+<p>   锁状态标志</p>
+<p> 线程锁</p>
+<p> 偏向线程id    </p>
+<p> 偏向时间戳</p>
+</li>
+<li><p>class指针</p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>对象实例数据</p>
+<p>  实例数据填充到对象属性上的值，包含父类实例变量和本类成员变量</p>
+</li>
+<li><p>填充字节</p>
+<p>  占位符，补充不够8字节的地方<br>&lt;！–more–&gt;</p>
+<h4 id="对象生成过程"><a href="#对象生成过程" class="headerlink" title="对象生成过程"></a>对象生成过程</h4></li>
+</ul>
+<h5 id="类加载检查"><a href="#类加载检查" class="headerlink" title="类加载检查"></a>类加载检查</h5><p>虚拟机在解析.class 文件时，遇到new 指令，会先到常量池找一下有没有这个类的符号引用，如果没有则执行类加载过程。</p>
+<h5 id="为新生对象分配内存"><a href="#为新生对象分配内存" class="headerlink" title="为新生对象分配内存"></a>为新生对象分配内存</h5><p>指针碰撞：一般是垃圾回收的复制算法和标记整理算法， 回收完会产生一大块内存空间，为对象分配内存是，直接拿对象的指针，在内存空间上移动一段距离。</p>
+<p>空闲列表：一般是指标记清除算法回收的内存，不连续，碎片化，空闲列表里放的就是这些内存的引用，分配时，就直接在空闲列表找可用的</p>
+<h4 id="对象的访问方式"><a href="#对象的访问方式" class="headerlink" title="对象的访问方式"></a>对象的访问方式</h4><h5 id="句柄式访问"><a href="#句柄式访问" class="headerlink" title="句柄式访问"></a>句柄式访问</h5><p>引用变量先到句柄池中找句柄，在拿句柄找实际对应的对象</p>
+<h5 id="直接指针"><a href="#直接指针" class="headerlink" title="直接指针"></a>直接指针</h5><p>引用变量跟堆内存上的对象有直接指向关系（空间换时间）</p>
+<p>JVM虚拟机默认第二种</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/%E5%8D%9A%E5%AE%A2%E5%90%8D%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="guozhongdong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="guozhongdong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
+            <a href="/2020/11/23/%E5%8D%9A%E5%AE%A2%E5%90%8D%E5%AD%97/" class="post-title-link" itemprop="url">第一篇博客</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-23 20:51:47" itemprop="dateCreated datePublished" datetime="2020-11-23T20:51:47+08:00">2020-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-24 13:04:54" itemprop="dateModified" datetime="2020-11-24T13:04:54+08:00">2020-11-24</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>147</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="练习基本语法"><a href="#练习基本语法" class="headerlink" title="练习基本语法"></a>练习基本语法</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级"><a href="#四级" class="headerlink" title="四级"></a>四级</h4><h5 id="五级"><a href="#五级" class="headerlink" title="五级"></a>五级</h5><h6 id="六级"><a href="#六级" class="headerlink" title="六级"></a>六级</h6><p>这里输入的都是正文， 换行需要在代码中实际空一行</p>
+<p>这就是换行了，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;输出&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>正文中的代码 <code>show table</code></p>
+<p>正文中的列表</p>
+<ol>
+<li>12312</li>
+<li>3443<ol>
+<li>234</li>
+<li>23324</li>
+</ol>
+</li>
+</ol>
+<p>无序列表</p>
+<ul>
+<li>12312</li>
+<li>234423</li>
+</ul>
+<p><strong>加粗</strong></p>
+<p><em>倾斜</em></p>
+<p><strong><em>加粗和倾斜</em></strong></p>
+
       
     </div>
 
@@ -364,9 +505,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -406,7 +557,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">0k</span>
+    <span title="站点总字数">1k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
